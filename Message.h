@@ -18,7 +18,7 @@ public:
 	Message();
 	Message(const Message& msg);
 	Message(const char* title, const char* body, Person& sender,Person& receiver, const DateTime& date);
-	const char* getTitle()const{return title;}
+	~Message();
 	const Person& getSender()const{return sender;}
 	const Person& getReceiver()const{return receiver;}
 	Person& getSender(){return sender;}

@@ -13,9 +13,9 @@
 
 #define NUM_OF_SPECIAL_CLASSES	2
 
-class Student{
+class Student : Person{
 public:
-
+	Student(Person& person);
 private:
 
 };
