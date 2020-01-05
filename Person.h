@@ -9,10 +9,13 @@
 #define PERSON_H_
 
 #include "Address.h"
-//#include "Message.h"
+#include "Message.h"
 #include "Date.h"
 
 #define PHON_NUM_LENGTH		10
+#define MAX_NUM_OF_MESSAGES 2048
+
+class Messages;
 
 class Person{
 public:
@@ -46,6 +49,7 @@ private:
 	char* fName;
 	char* lName;
 	char* email;
+	Messages* messages[MAX_NUM_OF_MESSAGES];
 };
 
 

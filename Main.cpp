@@ -6,7 +6,7 @@ using namespace std;
 
 
 int main() {
-	Person president;
-	School s("afeka",president);
+//	Person president;
+//	School s("afeka",president);
 	return 0;
 }

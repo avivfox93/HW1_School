@@ -11,6 +11,8 @@
 #include "Person.h"
 #include "Date.h"
 
+class Person;
+
 class Message{
 public:
 	Message();

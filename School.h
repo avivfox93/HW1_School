@@ -15,7 +15,6 @@
 #include "Teacher.h"
 #include "Message.h"
 
-#define MAX_NUM_OF_MESSAGES 2048
 #define NUM_OF_GRADES 6
 
 class School{
@@ -32,8 +31,6 @@ public:
 	Teacher** getAllTeachers();
 	Person** getAllPersons();
 	void sendMessage(Message& msg);
-	Message** getAllMessagesFromPerson(Person& p);
-	Message** getAllMessagesToPerson(Person& p);
 
 private:
 	char* name;
@@ -42,7 +39,6 @@ private:
 	Department** departments;
 	Grade* grades[NUM_OF_GRADES];
 	int numOfMessages = 0;
-	Message* messages[MAX_NUM_OF_MESSAGES];
 };
 
 
