@@ -11,19 +11,21 @@
 #include "Address.h"
 #include "Message.h"
 #include "Date.h"
+#include "School.h"
 
 #define PHON_NUM_LENGTH		10
 #define MAX_NUM_OF_MESSAGES 2048
 
+class School;
 class Messages;
 
 class Person{
 public:
-	Person();
+	Person(School& school);
 	Person(Person& p);
 	Person(Address& address, int id, const char* phoneNum, const char* DOB,
 			const char* fName, const char* lName, const char* email);
-	virtual ~Person();
+	~Person();
 	const Address& getAddress()const{return address;}
 	Address& getAddress(){return address;}
 	int getId()const{return id;}
@@ -41,7 +43,11 @@ public:
 	void setLName(const char* newName);
 	void setEmail(const char* newEmail);
 	void readMessages()const;
+	void setSchool(School& school);
+	School& getSchool(){return school;}
+	const School& getSchool()const{return school;}
 private:
+	School& school;
 	Address address;
 	int id;
 	char phoneNum[PHON_NUM_LENGTH];

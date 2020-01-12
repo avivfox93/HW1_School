@@ -12,8 +12,9 @@
 class Address{
 public:
 	Address();
-	Address(Address& address);
+	Address(const Address& address);
 	Address(const char* street, const char* town, int number);
+	~Address();
 	const char* getStreet()const{return street;}
 	const char* getTown()const{return town;}
 	int getNumber()const{return number;};

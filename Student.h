@@ -10,14 +10,19 @@
 
 #include "Person.h"
 #include "Grade.h"
-
-#define NUM_OF_SPECIAL_CLASSES	2
+#include "Subject.h"
+#define NUM_OF_SPECIAL_CLASSES		2
+#define MIN_NUM_OF_SPECIAL_CLASSES	1
 
 class Student : Person{
 public:
-	Student(Person& person);
-private:
-
+    Student(Person& person, Subject* specialClass);
+    const Subject*const* getSpecialClasses() const { return special_classes; };
+    void addSpecialClass(Subject* classes);
+    void changeSpecialClass(Subject* newClass, int index);
+protected:
+    int chosenClasses = MIN_NUM_OF_SPECIAL_CLASSES;
+    Subject* special_classes[NUM_OF_SPECIAL_CLASSES] = {nullptr};
 };
 
 
