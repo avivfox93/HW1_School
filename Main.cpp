@@ -175,8 +175,6 @@ void sendNewMessage(Person* user){
 
 Grade& selectGrade(School& school){
 	int i; bool ok = false;
-	cout << "Please select grade number: ";
-	cin >> i;
 	while(!ok){
 		cout << "Please select grade number: ";
 		cin >> i;
@@ -187,6 +185,22 @@ Grade& selectGrade(School& school){
 		ok = true;
 	}
 	return school.getGrade(i-1);
+}
+
+Student* findStudent(SchoolClass* schoolClass){
+	int i,input; bool ok = false;
+	for(i = 0 ; i < schoolClass->getNumOfStudents() ; i++)
+		cout << i+1 << "- " << *schoolClass->getStudentList()[i] << endl;
+	while(!ok){
+		cout << "Please choose Student number:" << endl;
+		cin >> input;
+		if(input > i || input < 1){
+			illegalChoiceError(input);
+			continue;
+		}
+		ok = true;
+	}
+	return schoolClass->getStudentList()[input-1];
 }
 
 void printPromtMessage(){
@@ -256,6 +270,27 @@ int main() {
 			break;
 		case 6:
 			school += createTeacher();
+			break;
+		case 7:
+			school += createStaff();
+			break;
+		case 8:
+			school += createNewSubject(school);
+			break;
+		case 9:
+			sendNewMessage(selectedPerson);
+			break;
+		case 10:
+			selectedClass->setClassPres(findStudent(selectedClass));
+			break;
+		case 11:
+			cout << school << endl;
+			break;
+		case 12:
+			cout << *selectedGrade << endl;
+			break;
+		case 13:
+			cout << *selectedClass << endl;
 			break;
 		case 14:
 			cout << *selectedPerson << endl;

@@ -25,11 +25,13 @@ public:
 	Student** getStudentList() { return students; };
 	const Student*const* getStudentList() const { return students; };
 	void setClassName(const char* className);
+	int getNumOfStudents()const{return numOfStudents;}
 	SchoolClass& operator+=(const Student&);
 	friend ostream& operator<<(ostream& os, const SchoolClass& schoolClass){
 		return os;
 	}
 private:
+	int numOfStudents;
 	char* className;
 	Teacher& homeroomTeacher;
 	Student* students[CLASS_MAX_NUM_OF_STUDENTS] = {nullptr};
