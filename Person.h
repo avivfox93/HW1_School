@@ -12,18 +12,20 @@
 #include "Message.h"
 #include "Date.h"
 #include "School.h"
+#include <iostream>
 
 #define PHON_NUM_LENGTH		10
 #define MAX_NUM_OF_MESSAGES 2048
+
+using namespace std;
 
 class School;
 class Messages;
 
 class Person{
 public:
-	Person(School& school);
-	Person(Person& p);
-	Person(Address& address, int id, const char* phoneNum, const char* DOB,
+	Person(const Person& p);
+	Person(Address& address, int id, const char* phoneNum, Date& DOB,
 			const char* fName, const char* lName, const char* email);
 	~Person();
 	const Address& getAddress()const{return address;}
@@ -43,11 +45,15 @@ public:
 	void setLName(const char* newName);
 	void setEmail(const char* newEmail);
 	void readMessages()const;
-	void setSchool(School& school);
-	School& getSchool(){return school;}
-	const School& getSchool()const{return school;}
+	void setSchool(School* school);
+	School* getSchool(){return school;}
+	School* const getSchool()const{return school;}
+	virtual void toOs(ostream& os)const{};
+	friend ostream& operator<<(ostream& os, const Person& person){
+		return os;
+	}
 private:
-	School& school;
+	School* school;
 	Address address;
 	int id;
 	char phoneNum[PHON_NUM_LENGTH];

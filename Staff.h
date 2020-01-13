@@ -7,7 +7,7 @@
 #include "Department.h"
 #include "MessageSender.h"
 
-class Staff:public Person, public MessageSender {
+class Staff : virtual public Person, public MessageSender {
 public:
     Staff(const Person& person);
 private:

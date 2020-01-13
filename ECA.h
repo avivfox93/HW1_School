@@ -19,6 +19,9 @@ public:
     const Staff& getSupervisor() const { return supervisor; };
     Student** getStudents() { return students; };
     const Student*const* getStudents() const { return students; };
+    friend ostream& operator<<(ostream& os, const ECA& eca){
+		return os;
+	}
 private:
     char* eca_name;
     Staff& supervisor;

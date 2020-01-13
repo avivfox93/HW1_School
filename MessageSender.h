@@ -10,10 +10,10 @@
 
 #include "Message.h"
 
-class MessageSender{
+class MessageSender : virtual public Person{
 public:
 	virtual ~MessageSender();
-	virtual void sendMessage(Message& message) = 0;
+	virtual void sendMessage(Message& message);
 };
 
 

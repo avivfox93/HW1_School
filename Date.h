@@ -8,10 +8,11 @@
 #ifndef DATE_H_
 #define DATE_H_
 
+#include <ctime>
 
 class Date{
 public:
-	Date();
+	Date();//Now Date
 	Date(int day, int month, int year);
 	int getDay()const{return day;}
 	int getMonth()const{return month;}
@@ -19,6 +20,10 @@ public:
 	void setDay(int day);
 	void setMonth(int month);
 	void setYear(int year);
+	void toOs(ostream& os)const{};
+	friend ostream& operator<<(ostream& os, const Date& date){
+		return os;
+	}
 private:
 	int day;
 	int month;
@@ -27,7 +32,7 @@ private:
 
 class DateTime : public Date{
 public:
-	DateTime();
+	DateTime();//Now date and time
 	DateTime(int day, int month, int year, int hour, int minutes);
 	int getHours()const{return hours;}
 	int getMinutes()const{return minutes;}

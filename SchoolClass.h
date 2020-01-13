@@ -10,7 +10,7 @@
 class SchoolClass
 {
 public:
-	SchoolClass(const char* class_name, Teacher& homeroom_teacher);
+	SchoolClass(const char* className, Teacher& homeroomTeacher);
 	SchoolClass(const SchoolClass& schoolClass);
 	~SchoolClass();
 	void addStudent(Student* new_student);
@@ -24,7 +24,11 @@ public:
 	const Student& getClassPres()const{return classPresident;};
 	Student** getStudentList() { return students; };
 	const Student*const* getStudentList() const { return students; };
-	void setClassName(const char* clasName);
+	void setClassName(const char* className);
+	SchoolClass& operator+=(const Student&);
+	friend ostream& operator<<(ostream& os, const SchoolClass& schoolClass){
+		return os;
+	}
 private:
 	char* className;
 	Teacher& homeroomTeacher;

@@ -22,22 +22,37 @@ public:
 	School(const char* name, Person& president);
 	School(const School& school);
 	~School();
-	void addDepartment(Department& department);
+	void addSubject(Subject* subject);
 	Department& findDepartment(const char* name);
 	void setName(const char* name);
 	const char* getName()const{return name;};
+	Person* getPersonByID(int id);
 	Person& getPresident(){return president;};
-	Student** getAllStudents();
-	Teacher** getAllTeachers();
+	Subject** getAllSubjects(){return subjects;}
+	Staff** getAllStaff(){return stuffMembers;}
 	Person** getAllPersons();
+	int getNumOfSubjects() const {return numOfSubjects;}
+	int getNumOfStaff() const {return numOfStaff;}
+	Grade& getGrade(int grade){return grades[grade];};
+	const Grade& getGrade(int grade)const{return grades[grade];};
 	void sendMessage(Message& msg);
+	School& operator+=(const Department& department);
+	School& operator+=(const Subject& department);
+	School& operator+=(const Staff& department);
+	School& operator+=(const Teacher& teacher);
+	friend ostream& operator<<(ostream& os, const School& school){
+		return os;
+	}
 
 private:
 	char* name;
 	Person& president;
 	int numOfDepartments = 0;
+	int numOfStudents,numOfTeachers,numOfStaff,numOfSubjects;
 	Department** departments;
-	Grade* grades[NUM_OF_GRADES];
+	Grade grades[NUM_OF_GRADES];
+	Subject** subjects;
+	Staff** stuffMembers;
 	int numOfMessages = 0;
 };
 

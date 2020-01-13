@@ -15,6 +15,9 @@ public:
 	void setSuper(Staff& staff);
 	void addStaff(Staff& staff);
 	void removeStaff(Staff& staff);
+	friend ostream& operator<<(ostream& os, const Department& department){
+		return os;
+	}
 private:
 	char* dep_name;
 	Staff& supervisor;

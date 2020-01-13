@@ -14,17 +14,17 @@
 class Student;
 class Subject;
 
-class Teacher : Person{
+class Teacher : public Person{
 public:
     Teacher(Address& address, int id, const char* phoneNum, const char* DOB,
-        const char* fName, const char* lName, const char* email, Subject& subject);
-    Teacher(Person& person, Subject& subject);
+        const char* fName, const char* lName, const char* email);
+    Teacher(Person& person);
     void changeMarks(Student& student, int mark);
-    const Subject& getSubject() const { return subject;};
-    Subject& getSubject() { return subject;};
+    Subject* const getSubject() const { return subject;};
+    Subject* getSubject() { return subject;};
     void setSubject(Subject& subject);
 protected:
-    Subject& subject;
+    Subject* subject = nullptr;
 };
 
 

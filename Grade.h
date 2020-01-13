@@ -9,19 +9,25 @@
 
 class Grade{
 public:
-	Grade(const char* name, Teacher& supervisor);
+	Grade();
+	Grade(Teacher& supervisor);
 	~Grade();
-	void addNewClass(SchoolClass* new_class);
-	void changeSuper(Teacher& teacher);
-	const char* getGradeName() const { return grade_name; };
+	void addNewClass(SchoolClass* newClass);
+	void setSuper(Teacher& teacher);
 	Teacher& getSuper() { return supervisor; };
 	const Teacher& getSuper() const { return supervisor; };
-	const SchoolClass* const getClasses() const { return school_classes; };
+	const SchoolClass * const* getClasses() const { return schoolClasses; };
+	SchoolClass ** getClasses() { return schoolClasses; };
 	void setGradeName(const char* gradeName);
+	int getNumberOfClasses() const {return numOfClasses;}
+	Grade& operator+=(const SchoolClass& schoolClass);
+	friend ostream& operator<<(ostream& os, const Grade& grade){
+		return os;
+	}
 private:
-	char* grade_name;
+	int numOfClasses = 0;
 	Teacher& supervisor;
-	SchoolClass school_classes[GRADE_MAX_NUM_OF_CLASSES];
+	SchoolClass* schoolClasses[GRADE_MAX_NUM_OF_CLASSES];
 };
 
 

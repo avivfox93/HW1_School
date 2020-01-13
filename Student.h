@@ -14,7 +14,7 @@
 #define NUM_OF_SPECIAL_CLASSES		2
 #define MIN_NUM_OF_SPECIAL_CLASSES	1
 
-class Student : Person{
+class Student : virtual public Person{
 public:
     Student(Person& person, Subject* specialClass);
     const Subject*const* getSpecialClasses() const { return special_classes; };

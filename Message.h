@@ -17,11 +17,11 @@ class Message{
 public:
 	Message();
 	Message(const Message& msg);
-	Message(const char* title, const char* body, Person& sender,Person& receiver, const DateTime& date);
+	Message(const char* title, const char* body,Person& receiver, const DateTime& date);
 	~Message();
-	const Person& getSender()const{return sender;}
+	const Person* getSender()const{return sender;}
 	const Person& getReceiver()const{return receiver;}
-	Person& getSender(){return sender;}
+	Person* getSender(){return sender;}
 	Person& getReceiver(){return receiver;}
 	const DateTime& getDate()const{return date;}
 	DateTime& getDate(){return date;}
@@ -29,10 +29,13 @@ public:
 	void setSender(Person& newSender);
 	void setReceiver(Person& newReceiver);
 	void setDate(DateTime& date);
+	friend ostream& operator<<(ostream& os, const Message& message){
+		return os;
+	}
 private:
 	char* title;
 	char* body;
-	Person& sender;
+	Person* sender = nullptr;
 	Person& receiver;
 	DateTime date;
 };

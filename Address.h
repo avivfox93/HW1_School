@@ -21,6 +21,9 @@ public:
 	void setStreet(const char* newName);
 	void setTown(const char* newTown);
 	void setNumber(int newNumber);
+	friend ostream& operator<<(ostream& os, const Address& address){
+		return os;
+	}
 private:
 	char* street;
 	char* town;
